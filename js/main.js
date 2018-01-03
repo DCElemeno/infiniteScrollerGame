@@ -11,8 +11,9 @@ Main.prototype = {
 
 		// Set up background
 		me.game.stage.backgroundColor = '479cde';
-		var bg = game.add.sprite(0, 0, 'sky');
-		bg.scale.setTo(2, 2);
+		var bg = me.game.add.sprite(0, 0, 'sky');
+		bg.width = me.game.width;
+		bg.height = me.game.height;
 
 		// Enable physics
 		me.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -26,11 +27,18 @@ Main.prototype = {
 		me.createPlayer();
 
 		// Add cursor controls
-		me.cursors = me.game.input.keyboard.createCursorKeys(); 
+		me.cursors = me.game.input.keyboard.createCursorKeys();
+		me.pauseKey = me.game.input.keyboard.addKey(Phaser.Keyboard.SPACE);
 
 		// Add score
 		me.score = 0;
 		me.createScore();
+
+		// Add pause text
+		me.pauseText = me.game.add.text(
+			window.innerWidth/2 - 25, 
+			window.innerHeight/2, '', 
+			{ fontSize: '64px', fill: '#FFF' });
 
 		// Create initial platforms
 		me.spacing = 300;
@@ -39,6 +47,15 @@ Main.prototype = {
 		// Timer to add platforms
 		me.addPlatform();
 		me.timer = game.time.events.loop(2000, me.addPlatform, me);
+
+		// Pause listener
+		me.cursors.down.onDown.add(unPause, self);
+		function unPause() {
+			if (me.game.paused) {
+				me.pauseText.text = '';
+				me.game.paused = false;
+			}	
+		}
 	},
 
 	update: function() {
@@ -63,6 +80,11 @@ Main.prototype = {
 		// RIGHT
 		else if (me.cursors.right.isDown) {
 		    me.player.body.velocity.x += 30;
+		}
+		// PAUSE
+		else if (me.cursors.down.isDown/*me.pauseKey.isDown*/) {
+			me.pauseText.text = 'PAUSE';
+			game.paused = true;
 		}
 		// Reduce velocity
 		else {
