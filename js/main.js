@@ -11,6 +11,8 @@ Main.prototype = {
 
 		// Set up background
 		me.game.stage.backgroundColor = '479cde';
+		var bg = game.add.sprite(0, 0, 'sky');
+		bg.scale.setTo(2, 2);
 
 		// Enable physics
 		me.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -55,12 +57,16 @@ Main.prototype = {
 		    me.player.body.velocity.y = -1400;
 		}
 		// LEFT
-		if (me.cursors.left.isDown) {
+		else if (me.cursors.left.isDown) {
 		    me.player.body.velocity.x += -30;
 		}
 		// RIGHT
-		if (me.cursors.right.isDown) {
+		else if (me.cursors.right.isDown) {
 		    me.player.body.velocity.x += 30;
+		}
+		// Reduce velocity
+		else {
+			me.player.body.velocity.x = me.player.body.velocity.x * 0.9;
 		}
 	},
 
@@ -101,9 +107,16 @@ Main.prototype = {
 
 		// Add tiles horizontally, leaving space for hole
 		for (var i = 0; i < tilesNeeded; i++) {
+	        
+	        // version with small holes
 	        if (i != hole && i != hole + 1){
 	            this.addTile(i * me.tileWidth, y);
-	        }          
+	        }
+
+			// version with small platforms	
+	        /*if (i == hole || i == hole + 1){
+	            this.addTile(i * me.tileWidth, y);
+	        }*/          
 	    }
 	},
 
