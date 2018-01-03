@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="js/gameover.js"></script>
     <style type="text/css">
         body {
-        	backround:black;
+        	background:blue;
             margin: 0;
         }
     </style>
@@ -19,7 +19,10 @@
 		(function() {
 
 				//Create a new game that fills the screen
-				game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO);
+				game = new Phaser.Game(
+					window.innerWidth * window.devicePixelRatio, 
+					window.innerHeight * window.devicePixelRatio, 
+					Phaser.AUTO);
 				
 				//Add all states
 				game.state.add("Boot", Boot);
