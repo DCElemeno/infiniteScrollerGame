@@ -1,4 +1,4 @@
-var Main = function(game){};
+var Main = function(game) {};
 
 Main.prototype = {
 
@@ -35,6 +35,7 @@ Main.prototype = {
 		me.initPlatforms();
 
 		// Timer to add platforms
+		me.addPlatform();
 		me.timer = game.time.events.loop(2000, me.addPlatform, me);
 	},
 
@@ -61,7 +62,6 @@ Main.prototype = {
 		if (me.cursors.right.isDown) {
 		    me.player.body.velocity.x += 30;
 		}
-
 	},
 
 	gameOver: function() {
@@ -138,9 +138,8 @@ Main.prototype = {
 		// Add collision
 		me.player.body.collideWorldBounds = true;
 
-		// Addd bounce
+		// Add bounce
 		me.player.body.bounce.y = 0.1;
-
 	},
 
 	createScore: function() {
