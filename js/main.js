@@ -106,7 +106,7 @@ Main.prototype = {
 	gameOver: function() {
 		var me = this;
 		highScore = (me.score > highScore)? me.score : highScore;
-		this.game.state.start('Main');
+		me.game.state.start('Main');
 	},
 
 	addTile: function(x, y) {

@@ -1,7 +1,8 @@
 # To Add
 
-1. space pauses
-2. store high score
-3. game over screen
-4. title screen
-5. increase difficulty
+DONE - store high score
+DONE - title screen
+(maybe not do?) game over screen
+
+1. increase difficulty
+2. colors change over time?
