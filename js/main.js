@@ -34,6 +34,11 @@ Main.prototype = {
 		me.score = 0;
 		me.createScore();
 
+		// Add high score
+		me.highScoreText = me.game.add.text(
+			10,10, highScore, 
+			{ fontSize: '36px', fill: '#FFF' });
+
 		// Add pause text
 		me.pauseText = me.game.add.text(
 			window.innerWidth/2 - 25, 
@@ -99,6 +104,8 @@ Main.prototype = {
 	},
 
 	gameOver: function() {
+		var me = this;
+		highScore = (me.score > highScore)? me.score : highScore;
 		this.game.state.start('Main');
 	},
 
