@@ -14,7 +14,7 @@ GameTitle.prototype = {
 
 		// Title screen text
 		me.game.add.text(150,  150, 
-			'Jumper Game\n\n'+
+			'Jumper\n\n'+
 			'Controls: LEFT, UP, RIGHT\n'+
 			'Pause:     DOWN\n\n'+
 			'[Press any key to start]', 
