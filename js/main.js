@@ -82,7 +82,13 @@ Main.prototype = {
 		    me.player.body.velocity.x += 30;
 		}
 		// PAUSE
-		else if (me.cursors.down.isDown/*me.pauseKey.isDown*/) {
+		else if (me.cursors.down.isDown) {
+			me.pauseText.text = 'PAUSE';
+			game.paused = true;
+		}
+		// PAUSE
+		else if (me.pauseKey.isDown) {
+			console.info("got here");
 			me.pauseText.text = 'PAUSE';
 			game.paused = true;
 		}
