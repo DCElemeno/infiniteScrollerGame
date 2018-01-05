@@ -6,3 +6,9 @@ DONE - title screen
 
 1. increase difficulty
 2. colors change over time?
+
+
+BUGS TODO list
+1. Firefox can be buggy
+2. 4k resolution causes error
+ --> ataddTile.getFirstDead
